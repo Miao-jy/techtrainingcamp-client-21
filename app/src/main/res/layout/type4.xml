@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/type4_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/type4_image_01"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/type4_title"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/tb09_1"/>
+
+    <ImageView
+        android:id="@+id/type4_image_02"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/type4_title"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/type4_image_01"
+        android:src="@drawable/tb09_2"/>
+
+    <ImageView
+        android:id="@+id/type4_image_03"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/type4_title"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/type4_image_02"
+        android:src="@drawable/tb09_3"/>
+
+    <ImageView
+        android:id="@+id/type4_image_04"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/type4_title"
+        android:layout_toRightOf="@id/type4_image_03"
+        android:src="@drawable/tb09_4"/>
+    
+
+    <TextView
+        android:id="@+id/type4_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type4_image_01"
+        android:layout_marginRight="20dp"
+        android:text="author" />
+
+    <TextView
+        android:id="@+id/type4_publishTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type4_image_01"
+        android:layout_toRightOf="@id/type4_author"
+        android:text="publishment" />
+
+</RelativeLayout>
