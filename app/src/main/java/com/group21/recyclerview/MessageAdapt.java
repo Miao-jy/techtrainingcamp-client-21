@@ -1,5 +1,7 @@
 package com.group21.recyclerview;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,19 +10,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Message> messageList;
 
     static class ViewHolder0 extends RecyclerView.ViewHolder {
+        View view;
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
         public ViewHolder0(@NonNull View itemView) {
             super(itemView);
+            view = itemView;
             titleView = itemView.findViewById(R.id.type0_title);
             authorView = itemView.findViewById(R.id.type0_author);
             publishTimeView = itemView.findViewById(R.id.type0_publishTime);
@@ -104,7 +111,20 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         switch (viewType) {
             case 0:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type0, parent, false);
-                return new ViewHolder0(view);
+                ViewHolder0 holder0 = new ViewHolder0(view);
+                holder0.view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences pref = v.getContext().getSharedPreferences("token", MODE_PRIVATE);
+                        String token = pref.getString("token", "");
+                        if (token.equals("")) {
+                            jumpLogin(v);
+                        } else {
+                            Toast.makeText(v.getContext(), "展示文章具体内容", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                return holder0;
             case 1:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type1, parent, false);
                 return new ViewHolder1(view);
@@ -164,4 +184,10 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public int getItemCount() {
         return messageList.size();
     }
+
+    private void jumpLogin(View v) {
+        Intent intent = new Intent(v.getContext(), LoginActivity.class);
+        v.getContext().startActivity(intent);
+    }
+
 }

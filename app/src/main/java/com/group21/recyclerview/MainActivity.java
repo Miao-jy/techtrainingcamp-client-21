@@ -2,12 +2,15 @@ package com.group21.recyclerview;
 
 
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
+import android.view.View;
 
 
 import java.util.ArrayList;
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         MessageAdapt adapt = new MessageAdapt(messageList);
         recyclerView.setAdapter(adapt);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences.Editor editor = getSharedPreferences("token", MODE_PRIVATE).edit();
+        editor.clear();
+        editor.apply();
     }
 
     private void initMessages() {
