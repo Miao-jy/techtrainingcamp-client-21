@@ -2,7 +2,6 @@ package com.group21.recyclerview;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +24,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
-        public ViewHolder0(@NonNull View itemView) {
+        public ViewHolder0(View itemView) {
             super(itemView);
             view = itemView;
             titleView = itemView.findViewById(R.id.type0_title);
@@ -35,12 +34,14 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     static class ViewHolder1 extends RecyclerView.ViewHolder {
+        View view;
         ImageView imageView;
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
         public ViewHolder1(View itemView) {
             super(itemView);
+            view = itemView;
             imageView = itemView.findViewById(R.id.type1_image);
             titleView = itemView.findViewById(R.id.type1_title);
             authorView = itemView.findViewById(R.id.type1_author);
@@ -49,12 +50,14 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     static class ViewHolder2 extends RecyclerView.ViewHolder {
+        View view;
         ImageView imageView;
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
         public ViewHolder2(View itemView) {
             super(itemView);
+            view = itemView;
             imageView = itemView.findViewById(R.id.type2_image);
             titleView = itemView.findViewById(R.id.type2_title);
             authorView = itemView.findViewById(R.id.type2_author);
@@ -63,12 +66,14 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     static class ViewHolder3 extends RecyclerView.ViewHolder {
+        View view;
         ImageView imageView;
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
         public ViewHolder3(View itemView) {
             super(itemView);
+            view = itemView;
             imageView = itemView.findViewById(R.id.type3_image);
             titleView = itemView.findViewById(R.id.type3_title);
             authorView = itemView.findViewById(R.id.type3_author);
@@ -76,6 +81,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
     static class ViewHolder4 extends RecyclerView.ViewHolder {
+        View view;
         ImageView imageView1;
         ImageView imageView2;
         ImageView imageView3;
@@ -85,6 +91,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView publishTimeView;
         public ViewHolder4(View itemView) {
             super(itemView);
+            view = itemView;
             imageView1 = itemView.findViewById(R.id.type4_image_01);
             imageView2 = itemView.findViewById(R.id.type4_image_02);
             imageView3 = itemView.findViewById(R.id.type4_image_03);
@@ -115,28 +122,70 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 holder0.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SharedPreferences pref = v.getContext().getSharedPreferences("token", MODE_PRIVATE);
-                        String token = pref.getString("token", "");
-                        if (token.equals("")) {
-                            jumpLogin(v);
+                        if (hasToken(v)) {
+                            Toast.makeText(v.getContext(), "展示文章具体内容0", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(v.getContext(), "展示文章具体内容", Toast.LENGTH_SHORT).show();
+                            jumpLogin(v);
                         }
                     }
                 });
                 return holder0;
             case 1:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type1, parent, false);
-                return new ViewHolder1(view);
+                ViewHolder1 holder1 = new ViewHolder1(view);
+                holder1.view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (hasToken(v)) {
+                            Toast.makeText(v.getContext(), "展示文章具体内容1", Toast.LENGTH_SHORT).show();
+                        } else {
+                            jumpLogin(v);
+                        }
+                    }
+                });
+                return holder1;
             case 2:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type2, parent, false);
-                return new ViewHolder2(view);
+                ViewHolder2 holder2 = new ViewHolder2(view);
+                holder2.view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (hasToken(v)) {
+                            Toast.makeText(v.getContext(), "展示文章具体内容2", Toast.LENGTH_SHORT).show();
+                        } else {
+                            jumpLogin(v);
+                        }
+                    }
+                });
+                return holder2;
             case 3:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type3, parent, false);
-                return new ViewHolder3(view);
+                ViewHolder3 holder3 = new ViewHolder3(view);
+                holder3.view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (hasToken(v)) {
+                            Toast.makeText(v.getContext(), "展示文章具体内容3", Toast.LENGTH_SHORT).show();
+                        } else {
+                            jumpLogin(v);
+                        }
+                    }
+                });
+                return holder3;
             case 4:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type4, parent, false);
-                return new ViewHolder4(view);
+                ViewHolder4 holder4 = new ViewHolder4(view);
+                holder4.view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (hasToken(v)) {
+                            Toast.makeText(v.getContext(), "展示文章具体内容4", Toast.LENGTH_SHORT).show();
+                        } else {
+                            jumpLogin(v);
+                        }
+                    }
+                });
+                return holder4;
         }
         return null;
     }
@@ -183,6 +232,12 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {
         return messageList.size();
+    }
+
+    private boolean hasToken(View v) {
+        SharedPreferences pref = v.getContext().getSharedPreferences("token", MODE_PRIVATE);
+        String token = pref.getString("token", "");
+        return !token.equals("");
     }
 
     private void jumpLogin(View v) {
