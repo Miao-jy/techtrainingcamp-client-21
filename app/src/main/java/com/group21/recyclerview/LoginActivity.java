@@ -61,10 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpURLConnection connection = null;
-                BufferedReader reader = null;
                 try {
-                    URL url = new URL("https://vcapi.lvdaqian.cn/login");
                     OkHttpClient client = new OkHttpClient.Builder()
                             .connectTimeout(30, TimeUnit.SECONDS)
                             .readTimeout(60, TimeUnit.SECONDS)
@@ -80,13 +77,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    Log.d(TAG, "responseData: " + responseData);
                     String token = getToken(responseData);
-                    Log.d(TAG, "token: " + token);
                     saveToken(token);
                     finish();
                 } catch (Exception e) {
-                    Log.d(TAG, "exception: " + e);
                     e.printStackTrace();
                 }
             }
