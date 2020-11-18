@@ -118,12 +118,12 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         switch (viewType) {
             case 0:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type0, parent, false);
-                ViewHolder0 holder0 = new ViewHolder0(view);
+                final ViewHolder0 holder0 = new ViewHolder0(view);
                 holder0.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (hasToken(v)) {
-                            Toast.makeText(v.getContext(), "展示文章具体内容0", Toast.LENGTH_SHORT).show();
+                            jumpArticle(holder0.getAdapterPosition(), v);
                         } else {
                             jumpLogin(v);
                         }
@@ -132,12 +132,12 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return holder0;
             case 1:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type1, parent, false);
-                ViewHolder1 holder1 = new ViewHolder1(view);
+                final ViewHolder1 holder1 = new ViewHolder1(view);
                 holder1.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (hasToken(v)) {
-                            Toast.makeText(v.getContext(), "展示文章具体内容1", Toast.LENGTH_SHORT).show();
+                            jumpArticle(holder1.getAdapterPosition(), v);
                         } else {
                             jumpLogin(v);
                         }
@@ -146,12 +146,12 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return holder1;
             case 2:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type2, parent, false);
-                ViewHolder2 holder2 = new ViewHolder2(view);
+                final ViewHolder2 holder2 = new ViewHolder2(view);
                 holder2.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (hasToken(v)) {
-                            Toast.makeText(v.getContext(), "展示文章具体内容2", Toast.LENGTH_SHORT).show();
+                            jumpArticle(holder2.getAdapterPosition(), v);
                         } else {
                             jumpLogin(v);
                         }
@@ -160,12 +160,12 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return holder2;
             case 3:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type3, parent, false);
-                ViewHolder3 holder3 = new ViewHolder3(view);
+                final ViewHolder3 holder3 = new ViewHolder3(view);
                 holder3.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (hasToken(v)) {
-                            Toast.makeText(v.getContext(), "展示文章具体内容3", Toast.LENGTH_SHORT).show();
+                            jumpArticle(holder3.getAdapterPosition(), v);
                         } else {
                             jumpLogin(v);
                         }
@@ -174,12 +174,12 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return holder3;
             case 4:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.type4, parent, false);
-                ViewHolder4 holder4 = new ViewHolder4(view);
+                final ViewHolder4 holder4 = new ViewHolder4(view);
                 holder4.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (hasToken(v)) {
-                            Toast.makeText(v.getContext(), "展示文章具体内容4", Toast.LENGTH_SHORT).show();
+                            jumpArticle(holder4.getAdapterPosition(), v);
                         } else {
                             jumpLogin(v);
                         }
@@ -242,6 +242,13 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private void jumpLogin(View v) {
         Intent intent = new Intent(v.getContext(), LoginActivity.class);
+        v.getContext().startActivity(intent);
+    }
+
+    private void jumpArticle(int position, View v) {
+        String id = messageList.get(position).getId();
+        Intent intent = new Intent(v.getContext(), ShowMarkdownActivity.class);
+        intent.putExtra("id", id);
         v.getContext().startActivity(intent);
     }
 

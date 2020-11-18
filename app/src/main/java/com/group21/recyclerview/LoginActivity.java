@@ -1,5 +1,6 @@
 package com.group21.recyclerview;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
@@ -36,6 +37,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         usernameEdit = findViewById(R.id.username_edit);
         passwordEdit = findViewById(R.id.password_edit);
         Button loginButton = findViewById(R.id.login_button);
