@@ -70,7 +70,7 @@ public class ShowMarkdownActivity extends AppCompatActivity {
                             })
                             .build();
                     Request request = new Request.Builder()
-                            .url("https://vcapi.lvdaqian.cn/article/" + id + "?markdown=false")
+                            .url("https://vcapi.lvdaqian.cn/article/" + id)
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
