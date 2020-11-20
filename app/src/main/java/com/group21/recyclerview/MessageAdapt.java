@@ -247,8 +247,14 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private void jumpArticle(int position, View v) {
         String id = messageList.get(position).getId();
+        String author = messageList.get(position).getAuthor();
+        String title = messageList.get(position).getTitle();
+        String publishTime = messageList.get(position).getPublishTime();
         Intent intent = new Intent(v.getContext(), ShowMarkdownActivity.class);
         intent.putExtra("id", id);
+        intent.putExtra("title", title);
+        intent.putExtra("author", author);
+        intent.putExtra("publishTime", publishTime);
         v.getContext().startActivity(intent);
     }
 

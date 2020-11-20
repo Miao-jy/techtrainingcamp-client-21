@@ -19,14 +19,42 @@
         android:background="#FF4081"
         android:layout_below="@+id/lable"
         android:layout_marginTop="10dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/article_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/article_title"
+            android:textSize="14sp"
+            android:layout_marginRight="20dp"
+            android:text="author"/>
+        <TextView
+            android:id="@+id/article_publishTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/article_title"
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/article_author"
+            android:text="publishTime"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/article_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_gravity="center"
-        android:textSize="30sp"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
         android:scrollbars="vertical"
         />
 
