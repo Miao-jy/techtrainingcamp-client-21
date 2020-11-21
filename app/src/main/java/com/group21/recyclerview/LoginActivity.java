@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText usernameEdit;
     private EditText passwordEdit;
+    private CheckBox checkPassword;
     private String username;
     private String password;
 
@@ -45,6 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         passwordEdit = findViewById(R.id.password_edit);
         Button loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(this);
+        checkPassword = findViewById(R.id.display_password);
+        checkPassword.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +58,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             username = usernameEdit.getText().toString();
             password = passwordEdit.getText().toString();
             sendRequestWithHttpURLConnection();
+        }
+        if (v.getId() == R.id.display_password) {
+            if (checkPassword.isChecked()) {
+                passwordEdit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                passwordEdit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
         }
 
     }
