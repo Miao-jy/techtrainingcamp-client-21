@@ -1,30 +1,38 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/type0_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="titletitletitletitletitle"
         android:layout_marginBottom="20dp"
+        android:text="titletitletitletitletitle"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/type0_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/type0_title"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:text="author" />
+        android:text="author"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type0_title" />
 
     <TextView
         android:id="@+id/type0_publishTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/type0_title"
-        android:layout_toRightOf="@id/type0_author"
-        android:text="publishment" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="publishment"
+        app:layout_constraintLeft_toRightOf="@id/type0_author"
+        app:layout_constraintTop_toBottomOf="@+id/type0_title" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

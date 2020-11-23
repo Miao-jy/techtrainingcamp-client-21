@@ -1,8 +1,5 @@
 package com.group21.recyclerview;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
@@ -11,13 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.FormBody;
@@ -66,7 +61,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 passwordEdit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             }
         }
-
     }
 
     private void sendRequestWithHttpURLConnection() {

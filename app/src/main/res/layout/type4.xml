@@ -1,7 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout4"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/type4_title"
@@ -9,60 +11,81 @@
         android:layout_height="wrap_content"
         android:text="title"
         android:textSize="22sp"
-        android:textStyle="bold" />
-    <LinearLayout
-        android:id="@+id/images"
-        android:layout_width="match_parent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/type4_image_01"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/tb09_1"
+        app:layout_constraintEnd_toStartOf="@+id/type4_image_02"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type4_title" />
 
-        <ImageView
-            android:id="@+id/type4_image_01"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/tb09_1"/>
+    <ImageView
+        android:id="@+id/type4_image_02"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/tb09_2"
+        app:layout_constraintBottom_toBottomOf="@+id/type4_image_01"
+        app:layout_constraintEnd_toStartOf="@+id/type4_image_03"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/type4_image_01" />
 
-        <ImageView
-            android:id="@+id/type4_image_02"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/tb09_2"/>
+    <ImageView
+        android:id="@+id/type4_image_03"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/tb09_3"
+        app:layout_constraintBottom_toBottomOf="@+id/type4_image_02"
+        app:layout_constraintEnd_toStartOf="@+id/type4_image_04"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/type4_image_02" />
 
-        <ImageView
-            android:id="@+id/type4_image_03"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/tb09_3"/>
-
-        <ImageView
-            android:id="@+id/type4_image_04"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:src="@drawable/tb09_4"/>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/type4_image_04"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tb09_4"
+        app:layout_constraintBottom_toBottomOf="@+id/type4_image_03"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/type4_image_03" />
 
     <TextView
         android:id="@+id/type4_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/images"
-        android:layout_marginRight="20dp"
-        android:text="author" />
+        android:layout_marginTop="2dp"
+        android:text="author"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type4_image_01" />
 
     <TextView
         android:id="@+id/type4_publishTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/images"
-        android:layout_toRightOf="@id/type4_author"
-        android:text="publishment" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="2dp"
+        android:text="publishment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/type4_author"
+        app:layout_constraintTop_toBottomOf="@+id/type4_image_01" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

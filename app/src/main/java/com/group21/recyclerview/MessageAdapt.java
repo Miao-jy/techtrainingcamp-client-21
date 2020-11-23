@@ -2,16 +2,15 @@ package com.group21.recyclerview;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -24,6 +23,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
+
         public ViewHolder0(View itemView) {
             super(itemView);
             view = itemView;
@@ -39,6 +39,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
+
         public ViewHolder1(View itemView) {
             super(itemView);
             view = itemView;
@@ -55,6 +56,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
+
         public ViewHolder2(View itemView) {
             super(itemView);
             view = itemView;
@@ -71,6 +73,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
+
         public ViewHolder3(View itemView) {
             super(itemView);
             view = itemView;
@@ -80,6 +83,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             publishTimeView = itemView.findViewById(R.id.type3_publishTime);
         }
     }
+
     static class ViewHolder4 extends RecyclerView.ViewHolder {
         View view;
         ImageView imageView1;
@@ -89,6 +93,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView titleView;
         TextView authorView;
         TextView publishTimeView;
+
         public ViewHolder4(View itemView) {
             super(itemView);
             view = itemView;
@@ -112,8 +117,9 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return messageList.get(position).getType();
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
             case 0:
@@ -191,7 +197,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message message = messageList.get(position);
         if (holder instanceof ViewHolder0) {
             ViewHolder0 holder0 = (ViewHolder0) holder;
@@ -227,7 +233,7 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             holder4.imageView3.setImageResource(covers[2]);
             holder4.imageView4.setImageResource(covers[3]);
         }
-}
+    }
 
     @Override
     public int getItemCount() {

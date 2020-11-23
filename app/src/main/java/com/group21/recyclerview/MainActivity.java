@@ -1,17 +1,13 @@
 package com.group21.recyclerview;
 
-
-
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.DividerItemDecoration;
-import android.view.View;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         Message message1 = new Message(
                 "event_02", "Lark·巡洋计划开发者大赛圆满结束", "bytedance",
-                "2019年10月7日",1, R.drawable.event_02);
+                "2019年10月7日", 1, R.drawable.event_02);
         messageList.add(message1);
 
         Message message2 = new Message(
@@ -71,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Message message4 = new Message(
                 "teamBuilding_09", "9月18日淀山湖户外团建", "vc mobile team",
                 "2020年9月7日", 4,
-                new int[] {R.drawable.tb09_1,R.drawable.tb09_2,R.drawable.tb09_3,R.drawable.tb09_4});
+                new int[]{R.drawable.tb09_1, R.drawable.tb09_2, R.drawable.tb09_3, R.drawable.tb09_4});
         messageList.add(message4);
     }
 }
