@@ -35,10 +35,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
         usernameEdit = findViewById(R.id.username_edit);
         passwordEdit = findViewById(R.id.password_edit);
         Button loginButton = findViewById(R.id.login_button);
