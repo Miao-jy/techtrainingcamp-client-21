@@ -3,11 +3,11 @@ package com.group21.recyclerview;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +53,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             username = usernameEdit.getText().toString();
             password = passwordEdit.getText().toString();
             sendRequestWithHttpURLConnection();
+            Toast.makeText(v.getContext(), "登录成功", Toast.LENGTH_SHORT).show();
+            finish();
         }
         if (v.getId() == R.id.display_password) {
             if (checkPassword.isChecked()) {
@@ -85,7 +87,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     String responseData = response.body().string();
                     String token = getToken(responseData);
                     saveToken(token);
-                    finish();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -100,10 +101,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void saveToken(String token) {
-        Log.d(TAG, "saveToken: start");
         SharedPreferences.Editor editor = getSharedPreferences("token", MODE_PRIVATE).edit();
         editor.putString("token", token);
         editor.apply();
-        Log.d(TAG, "saveToken: finish");
     }
 }
