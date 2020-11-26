@@ -1,6 +1,7 @@
 package com.group21.recyclerview;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import androidx.annotation.Nullable;
+
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 
 public class SplashActivity extends Activity {
@@ -20,13 +23,13 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startMainActivity();
-                Log.d(TAG, "run: 当前线程为：" + Thread.currentThread().getName());
-            }
-        }, 2000);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                startMainActivity();
+//                Log.d(TAG, "run: 当前线程为：" + Thread.currentThread().getName());
+//            }
+//        }, 2000);
     }
 
     private void startMainActivity() {
@@ -45,6 +48,11 @@ public class SplashActivity extends Activity {
 
         return super.onTouchEvent(event);
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 
     @Override
