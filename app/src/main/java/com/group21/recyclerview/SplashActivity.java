@@ -23,13 +23,13 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                startMainActivity();
-//                Log.d(TAG, "run: 当前线程为：" + Thread.currentThread().getName());
-//            }
-//        }, 2000);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startMainActivity();
+                Log.d(TAG, "run: 当前线程为：" + Thread.currentThread().getName());
+            }
+        }, 1200);
     }
 
     private void startMainActivity() {

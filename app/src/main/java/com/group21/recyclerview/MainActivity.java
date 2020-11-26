@@ -1,5 +1,6 @@
 package com.group21.recyclerview;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,5 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 "2020年9月7日", 4,
                 new int[]{R.drawable.tb09_1, R.drawable.tb09_2, R.drawable.tb09_3, R.drawable.tb09_4});
         messageList.add(message4);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 }

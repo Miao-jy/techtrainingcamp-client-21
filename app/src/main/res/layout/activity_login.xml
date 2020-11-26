@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:path="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,10 +11,13 @@
         android:id="@+id/lable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="登录界面"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        fontPath="fonts/SourceHanSansCN-Bold.otf"
+        path:ignore="MissingPrefix"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="#FFEB3B"
+        android:background="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lable" />
 
@@ -30,7 +34,7 @@
         android:id="@+id/username_text"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_vertical|end"
         android:text="用户名："
@@ -41,7 +45,7 @@
         android:id="@+id/username_edit"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:hint="请输入用户名"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

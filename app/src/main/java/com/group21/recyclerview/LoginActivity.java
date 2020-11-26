@@ -1,5 +1,6 @@
 package com.group21.recyclerview;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import java.util.concurrent.TimeUnit;
 
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -100,5 +102,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         SharedPreferences.Editor editor = getSharedPreferences("token", MODE_PRIVATE).edit();
         editor.putString("token", token);
         editor.apply();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 }
