@@ -43,7 +43,7 @@
         android:id="@+id/type1_publishTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
         android:text="publishment"
         app:layout_constraintBottom_toBottomOf="parent"

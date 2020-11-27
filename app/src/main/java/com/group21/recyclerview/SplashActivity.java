@@ -5,16 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import androidx.annotation.Nullable;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
-
+/**
+ * app的启动界面
+ */
 public class SplashActivity extends Activity {
-    private static final String TAG = SplashActivity.class.getSimpleName();
     private Handler handler = new Handler();
     private boolean isStartMainActivity = false;
 
@@ -22,12 +22,10 @@ public class SplashActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 startMainActivity();
-                Log.d(TAG, "run: 当前线程为：" + Thread.currentThread().getName());
             }
         }, 1200);
     }
@@ -42,10 +40,7 @@ public class SplashActivity extends Activity {
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        // 点击跳动主界面
-        Log.i(TAG, "onTouchEvent: Action "+ event.getAction());
         startMainActivity();
-
         return super.onTouchEvent(event);
 
     }
@@ -57,10 +52,8 @@ public class SplashActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-
         // 移除延迟函数
         handler.removeCallbacks(null);
-
         super.onDestroy();
     }
 }

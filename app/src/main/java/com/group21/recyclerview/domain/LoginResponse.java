@@ -1,5 +1,8 @@
 package com.group21.recyclerview.domain;
 
+/**
+ * 登录请求返回结果
+ */
 public class LoginResponse {
     private String code;
 

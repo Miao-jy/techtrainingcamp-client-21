@@ -3,15 +3,14 @@ package com.group21.recyclerview;
 import android.app.Application;
 import android.content.Context;
 
-import org.jetbrains.annotations.NotNull;
-
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
-import io.github.inflationx.viewpump.InflateResult;
-import io.github.inflationx.viewpump.Interceptor;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
+/**
+ * 重写Application类，以使用新的字体
+ */
 public class MyApplication extends Application {
     @Override
     public void onCreate() {

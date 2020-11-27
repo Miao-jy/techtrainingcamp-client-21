@@ -2,8 +2,6 @@ package com.group21.recyclerview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -13,13 +11,10 @@ import android.text.method.ScrollingMovementMethod;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
-import com.group21.recyclerview.R;
 import com.group21.recyclerview.domain.ArticleResponse;
-import com.group21.recyclerview.util.BitmapImage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,11 +28,12 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.Route;
 
-
+/**
+ * 文章详情展示界面
+ */
 public class ShowMarkdownActivity extends AppCompatActivity {
 
     private String article;
-    private String TAG = "ShowMarkdownActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +56,6 @@ public class ShowMarkdownActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.d(TAG, "article: " + article);
         try {
             if (article != null) {
                 textView.setText(parseText(article));
@@ -70,6 +65,9 @@ public class ShowMarkdownActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 获取文章详情
+     */
     private void getArticle(final String id) throws InterruptedException {
         Thread articleThread = new Thread(new Runnable() {
             @Override
@@ -89,7 +87,7 @@ public class ShowMarkdownActivity extends AppCompatActivity {
                             })
                             .build();
                     Request request;
-                    if (Math.random() > 0.5) {
+                    if (Math.random() > 0.5) {  // 随机获取Markdown格式或者纯文本格式
                         request = new Request.Builder().url("https://vcapi.lvdaqian.cn/article/" + id).build();
                     } else {
                         request = new Request.Builder().url("https://vcapi.lvdaqian.cn/article/" + id + "?markdown=true").build();
@@ -108,6 +106,9 @@ public class ShowMarkdownActivity extends AppCompatActivity {
         articleThread.join();
     }
 
+    /**
+     * 解析Markdonw格式文章，采用SpannableString实现图文混排
+     */
     private SpannableStringBuilder parseText(String article) throws IOException {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         BufferedReader reader = new BufferedReader(new StringReader(article));
@@ -116,27 +117,23 @@ public class ShowMarkdownActivity extends AppCompatActivity {
             line = line.trim();
             if (line.length() == 0) {
                 spannableStringBuilder.append("\n");
-                Log.d(TAG, "空行_" + "\n" + "_");
             } else if (line.charAt(0) == '#' && line.charAt(1) == '#') {
                 line = line.substring(2);
                 SpannableString string = new SpannableString(line);
                 string.setSpan(new AbsoluteSizeSpan(16, true), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 string.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 spannableStringBuilder.append(string).append("\n");
-                Log.d(TAG, "二级标题_" + string + "_");
             } else if (line.charAt(0) == '#' && line.charAt(1) != '#') {
                 line = line.substring(1);
                 SpannableString string = new SpannableString(line);
                 string.setSpan(new AbsoluteSizeSpan(17, true), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 string.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 spannableStringBuilder.append(string).append("\n");
-                Log.d(TAG, "一级标题_" + string + "_");
             } else if (line.charAt(0) == '-') {
                 line = "   ·" + line.substring(1);
                 SpannableString string = new SpannableString(line);
                 string.setSpan(new AbsoluteSizeSpan(15, true), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 spannableStringBuilder.append(string).append("\n");
-                Log.d(TAG, "无序列表_" + string + "_");
             } else if ((line.charAt(0) == '1' || line.charAt(0) == '2'
                     || line.charAt(0) == '3' || line.charAt(0) == '4'
                     || line.charAt(0) == '5' || line.charAt(0) == '6'
@@ -146,7 +143,6 @@ public class ShowMarkdownActivity extends AppCompatActivity {
                 SpannableString string = new SpannableString(line);
                 string.setSpan(new AbsoluteSizeSpan(15, true), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 spannableStringBuilder.append(string).append("\n");
-                Log.d(TAG, "有序列表_" + string + "_");
             } else if (line.charAt(0) == '!' && line.charAt(1) == '[') {
                 char[] chars = line.toCharArray();
                 int start = 0, end = 0;
@@ -158,9 +154,7 @@ public class ShowMarkdownActivity extends AppCompatActivity {
                     }
                 }
                 String resourceName = new String(chars, start + 1, end - start).toLowerCase().split("\\.")[0];
-                Log.d(TAG, "resourceName: " + resourceName);
                 int id = getResources().getIdentifier(resourceName, "drawable", getPackageName());
-                Log.d(TAG, "resourceId: " + id);
                 Drawable drawable = getResources().getDrawable(id);
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                 SpannableString string = new SpannableString(line);
@@ -170,7 +164,6 @@ public class ShowMarkdownActivity extends AppCompatActivity {
                 SpannableString string = new SpannableString(line);
                 string.setSpan(new AbsoluteSizeSpan(15, true), 0, string.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
                 spannableStringBuilder.append(string).append("\n");
-                Log.d(TAG, "正文_" + string + "_");
             }
         }
         return spannableStringBuilder;

@@ -1,5 +1,8 @@
 package com.group21.recyclerview.domain;
 
+/**
+ * 服务器获取到的文章
+ */
 public class ArticleResponse {
     private String code;
     private String message;

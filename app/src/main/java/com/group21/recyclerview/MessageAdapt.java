@@ -18,10 +18,17 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * recyclerView的适配器
+ * 使用5种ViewHolder分别适配不同的5种布局
+ */
 public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Message> messageList;
     private Context context;
 
+    /**
+     * 布局0
+     */
     static class ViewHolder0 extends RecyclerView.ViewHolder {
         View view;
         TextView titleView;
@@ -37,6 +44,9 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
+    /**
+     * 布局1
+     */
     static class ViewHolder1 extends RecyclerView.ViewHolder {
         View view;
         ImageView imageView;
@@ -54,6 +64,9 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
+    /**
+     * 布局2
+     */
     static class ViewHolder2 extends RecyclerView.ViewHolder {
         View view;
         ImageView imageView;
@@ -71,6 +84,9 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
+    /**
+     * 布局3
+     */
     static class ViewHolder3 extends RecyclerView.ViewHolder {
         View view;
         ImageView imageView;
@@ -88,6 +104,9 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
+    /**
+     * 布局4
+     */
     static class ViewHolder4 extends RecyclerView.ViewHolder {
         View view;
         ImageView imageView1;
@@ -111,17 +130,29 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-
+    /**
+     * 构造函数
+     * @param messageList 信息数据
+     * @param context Context对象，用于传入位图类中解析高分辨率图片
+     */
     public MessageAdapt(List<Message> messageList, Context context) {
         this.messageList = messageList;
         this.context = context;
     }
 
+    /**
+     * 获取当前信息对应类型
+     * @param position
+     * @return
+     */
     @Override
     public int getItemViewType(int position) {
         return messageList.get(position).getType();
     }
 
+    /**
+     * 根据信息对应类型创建ViewHolder，并且绑定点击后登录或展示文章功能
+     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -201,6 +232,10 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return null;
     }
 
+    /**
+     *对当前信息动态绑定对应的ViewHolder
+     * 实现不同类型的展示
+     */
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message message = messageList.get(position);
@@ -233,14 +268,10 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             holder4.authorView.setText(message.getAuthor());
             holder4.publishTimeView.setText(message.getPublishTime());
             int[] covers = message.getCovers();
-            //holder4.imageView1.setImageResource(covers[0]);
-            holder4.imageView1.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_1,300, 200));
-            //holder4.imageView2.setImageResource(covers[1]);
-            holder4.imageView2.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_2,300, 200));
-            //holder4.imageView3.setImageResource(covers[2]);
-            holder4.imageView3.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_3,300, 200));
-            //holder4.imageView4.setImageResource(covers[3]);
-            holder4.imageView4.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_4,300, 200));
+            holder4.imageView1.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),covers[0],300, 200));
+            holder4.imageView2.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),covers[1],300, 200));
+            holder4.imageView3.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),covers[2],300, 200));
+            holder4.imageView4.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),covers[3],300, 200));
         }
     }
 
@@ -249,17 +280,26 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return messageList.size();
     }
 
+    /**
+     * 判断是否已经获取到token
+     */
     private boolean hasToken(View v) {
         SharedPreferences pref = v.getContext().getSharedPreferences("token", MODE_PRIVATE);
         String token = pref.getString("token", "");
         return !token.equals("");
     }
 
+    /**
+     * 跳转到登录界面
+     */
     private void jumpLogin(View v) {
         Intent intent = new Intent(v.getContext(), LoginActivity.class);
         v.getContext().startActivity(intent);
     }
 
+    /**
+     * 跳转到获取文章界面
+     */
     private void jumpArticle(int position, View v) {
         String id = messageList.get(position).getId();
         String author = messageList.get(position).getAuthor();

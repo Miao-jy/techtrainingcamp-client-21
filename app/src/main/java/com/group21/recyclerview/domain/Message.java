@@ -1,6 +1,10 @@
 package com.group21.recyclerview.domain;
 
+/**
+ * 公告板中一条具体信息
+ */
 public class Message {
+
     private String id;
     private String title;
     private String author;
@@ -9,6 +13,9 @@ public class Message {
     private int coverId;
     private int[] covers;
 
+    /**
+     * 无图片类型信息
+     */
     public Message(String id, String title, String author, String publishTime, int type) {
         this.id = id;
         this.title = title;
@@ -17,6 +24,9 @@ public class Message {
         this.type = type;
     }
 
+    /**
+     * 有一张图片类型信息
+     */
     public Message(String id, String title, String author, String publishTime, int type, int coverId) {
         this.id = id;
         this.title = title;
@@ -26,6 +36,9 @@ public class Message {
         this.coverId = coverId;
     }
 
+    /**
+     * 有多张图片类型信息
+     */
     public Message(String id, String title, String author, String publishTime, int type, int[] covers) {
         this.id = id;
         this.title = title;

@@ -9,11 +9,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.group21.recyclerview.R;
 import com.group21.recyclerview.domain.LoginResponse;
 
 import java.util.concurrent.TimeUnit;
@@ -25,6 +23,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 登录界面
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText usernameEdit;
@@ -47,6 +48,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         checkPassword.setOnClickListener(this);
     }
 
+    /**
+     *绑定点击事件
+     * 点击登录按钮发送网络请求
+     * 点击显示密码，展示或隐藏密码
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.login_button) {
@@ -65,6 +71,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /**
+     * 开辟新线程发送网络请求
+     */
     private void sendRequestWithHttpURLConnection() {
         new Thread(new Runnable() {
             @Override
@@ -94,18 +103,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }).start();
     }
 
+    /**
+     * 从请求结果中解析token
+     */
     private String getToken(String responseData) {
         Gson gson = new Gson();
         LoginResponse loginResponse = gson.fromJson(responseData, LoginResponse.class);
         return loginResponse.getToken();
     }
 
+    /**
+     *持久化保存token
+     */
     private void saveToken(String token) {
         SharedPreferences.Editor editor = getSharedPreferences("token", MODE_PRIVATE).edit();
         editor.putString("token", token);
         editor.apply();
     }
 
+    /**
+     *修改字体
+     */
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));

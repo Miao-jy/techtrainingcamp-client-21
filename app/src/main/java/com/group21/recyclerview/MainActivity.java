@@ -3,7 +3,6 @@ package com.group21.recyclerview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +15,10 @@ import java.util.List;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
+/**
+ * 信息公告页展示界面
+ * 采用recyclerView实现
+ */
 public class MainActivity extends AppCompatActivity {
 
     private List<Message> messageList = new ArrayList<>();
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapt);
     }
 
+    /**
+     * 退出app后清除缓存的token
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -43,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     * 初始化全部信息数据
+     */
     private void initMessages() {
         Message message0 = new Message(
                 "event_01", "2020字节跳动全球员工摄影大赛邀请函", "bytedance",
@@ -71,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         messageList.add(message4);
     }
 
+    /**
+     *修改字体
+     */
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
