@@ -10,10 +10,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.group21.recyclerview.R;
+import com.group21.recyclerview.domain.LoginResponse;
+
 import java.util.concurrent.TimeUnit;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;

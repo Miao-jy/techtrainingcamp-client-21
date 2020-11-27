@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:path="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <TextView
@@ -9,16 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="文章详细内容"
-        android:textSize="30sp"
-        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        fontPath="fonts/SourceHanSansCN-Bold.otf"
+        path:ignore="MissingPrefix"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"/>
     <View
         android:id="@+id/line"
         android:layout_height="1dp"
         android:layout_width="match_parent"
-        android:background="#FFEB3B"
-        android:layout_below="@+id/lable"
-        android:layout_marginTop="10dp"/>
+        android:background="#000000" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -37,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
             android:textSize="14sp"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:text="author"/>
         <TextView
             android:id="@+id/article_publishTime"
@@ -45,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
             android:textSize="14sp"
-            android:layout_toRightOf="@+id/article_author"
+            android:layout_toEndOf="@+id/article_author"
             android:text="publishTime"/>
     </RelativeLayout>
 
@@ -54,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="30px"
+        android:textSize="15px"
         android:layout_marginTop="20dp"
         android:scrollbars="vertical"
         />

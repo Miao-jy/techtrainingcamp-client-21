@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.group21.recyclerview.domain.Message;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayout);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        MessageAdapt adapt = new MessageAdapt(messageList);
+        MessageAdapt adapt = new MessageAdapt(messageList,MainActivity.this);
         recyclerView.setAdapter(adapt);
     }
 

@@ -1,5 +1,6 @@
 package com.group21.recyclerview;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -7,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.group21.recyclerview.domain.Message;
+import com.group21.recyclerview.util.BitmapImage;
 
 import java.util.List;
 
@@ -17,6 +20,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Message> messageList;
+    private Context context;
 
     static class ViewHolder0 extends RecyclerView.ViewHolder {
         View view;
@@ -108,8 +112,9 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
 
-    public MessageAdapt(List<Message> messageList) {
+    public MessageAdapt(List<Message> messageList, Context context) {
         this.messageList = messageList;
+        this.context = context;
     }
 
     @Override
@@ -228,10 +233,14 @@ public class MessageAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             holder4.authorView.setText(message.getAuthor());
             holder4.publishTimeView.setText(message.getPublishTime());
             int[] covers = message.getCovers();
-            holder4.imageView1.setImageResource(covers[0]);
-            holder4.imageView2.setImageResource(covers[1]);
-            holder4.imageView3.setImageResource(covers[2]);
-            holder4.imageView4.setImageResource(covers[3]);
+            //holder4.imageView1.setImageResource(covers[0]);
+            holder4.imageView1.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_1,300, 200));
+            //holder4.imageView2.setImageResource(covers[1]);
+            holder4.imageView2.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_2,300, 200));
+            //holder4.imageView3.setImageResource(covers[2]);
+            holder4.imageView3.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_3,300, 200));
+            //holder4.imageView4.setImageResource(covers[3]);
+            holder4.imageView4.setImageBitmap(BitmapImage.decodeSampledBitmapFromResource(context.getResources(),R.drawable.tb09_4,300, 200));
         }
     }
 

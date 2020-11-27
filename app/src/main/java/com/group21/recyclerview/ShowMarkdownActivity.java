@@ -1,5 +1,6 @@
 package com.group21.recyclerview;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,18 +13,17 @@ import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.widget.TextView;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-
 import com.google.gson.Gson;
+import com.group21.recyclerview.R;
+import com.group21.recyclerview.domain.ArticleResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.concurrent.TimeUnit;
 
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import okhttp3.Authenticator;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -169,5 +169,10 @@ public class ShowMarkdownActivity extends AppCompatActivity {
             }
         }
         return spannableStringBuilder;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 }
