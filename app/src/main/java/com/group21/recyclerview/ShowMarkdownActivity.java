@@ -2,6 +2,8 @@ package com.group21.recyclerview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.group21.recyclerview.R;
 import com.group21.recyclerview.domain.ArticleResponse;
+import com.group21.recyclerview.util.BitmapImage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,10 +88,12 @@ public class ShowMarkdownActivity extends AppCompatActivity {
                                 }
                             })
                             .build();
-                    Request request = new Request.Builder()
-                            .url("https://vcapi.lvdaqian.cn/article/" + id + "?markdown=true")
-                            //.url("https://vcapi.lvdaqian.cn/article/" + id)
-                            .build();
+                    Request request;
+                    if (Math.random() > 0.5) {
+                        request = new Request.Builder().url("https://vcapi.lvdaqian.cn/article/" + id).build();
+                    } else {
+                        request = new Request.Builder().url("https://vcapi.lvdaqian.cn/article/" + id + "?markdown=true").build();
+                    }
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     Gson gson = new Gson();
