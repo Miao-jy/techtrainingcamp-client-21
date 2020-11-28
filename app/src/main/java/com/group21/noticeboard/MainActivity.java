@@ -1,4 +1,4 @@
-package com.group21.recyclerview;
+package com.group21.noticeboard;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.group21.recyclerview.domain.Message;
+import com.group21.noticeboard.domain.Message;
 
 import java.util.ArrayList;
 import java.util.List;

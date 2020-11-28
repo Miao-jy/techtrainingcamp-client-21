@@ -1,4 +1,4 @@
-package com.group21.recyclerview.domain;
+package com.group21.noticeboard.domain;
 
 /**
  * 公告板中一条具体信息

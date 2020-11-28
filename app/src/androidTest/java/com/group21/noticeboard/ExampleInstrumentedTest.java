@@ -1,4 +1,4 @@
-package com.group21.recyclerview;
+package com.group21.noticeboard;
 
 import android.content.Context;
 

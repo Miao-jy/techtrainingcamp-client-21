@@ -1,4 +1,4 @@
-package com.group21.recyclerview;
+package com.group21.noticeboard;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,7 +14,7 @@ import android.text.style.StyleSpan;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
-import com.group21.recyclerview.domain.ArticleResponse;
+import com.group21.noticeboard.domain.ArticleResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;

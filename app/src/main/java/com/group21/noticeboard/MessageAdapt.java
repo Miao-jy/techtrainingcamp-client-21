@@ -1,4 +1,4 @@
-package com.group21.recyclerview;
+package com.group21.noticeboard;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.group21.recyclerview.domain.Message;
-import com.group21.recyclerview.util.BitmapImage;
+import com.group21.noticeboard.domain.Message;
+import com.group21.noticeboard.util.BitmapImage;
 
 import java.util.List;
 
