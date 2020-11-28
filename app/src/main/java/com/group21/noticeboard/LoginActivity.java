@@ -1,4 +1,4 @@
-package com.group21.recyclerview;
+package com.group21.noticeboard;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.group21.recyclerview.domain.LoginResponse;
+import com.group21.noticeboard.domain.LoginResponse;
 
 import java.util.concurrent.TimeUnit;
 

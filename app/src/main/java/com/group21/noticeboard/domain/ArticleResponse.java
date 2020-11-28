@@ -1,4 +1,4 @@
-package com.group21.recyclerview.domain;
+package com.group21.noticeboard.domain;
 
 /**
  * 服务器获取到的文章

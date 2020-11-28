@@ -1,4 +1,4 @@
-package com.group21.recyclerview.domain;
+package com.group21.noticeboard.domain;
 
 /**
  * 登录请求返回结果

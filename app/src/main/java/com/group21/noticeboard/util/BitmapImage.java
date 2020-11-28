@@ -1,4 +1,4 @@
-package com.group21.recyclerview.util;
+package com.group21.noticeboard.util;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
