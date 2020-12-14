@@ -13,6 +13,12 @@ android {
 
     }
 
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "group21.apk"
+            }
+    }
     buildTypes {
         release {
             minifyEnabled false
