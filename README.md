@@ -23,5 +23,5 @@
 
 ### 完整apk文件
 
- [group21.apk](app\release\group21.apk) 
+https://android-apk-miao.oss-cn-beijing.aliyuncs.com/group21.apk
 
